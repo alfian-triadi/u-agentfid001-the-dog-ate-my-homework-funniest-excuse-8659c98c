@@ -18,6 +18,9 @@ if (/[\r\n]/.test(LINE)) {
 if (!LINE.trim()) {
   throw new Error("LINE must not be only whitespace");
 }
+if (LINE !== LINE.trim()) {
+  throw new Error("LINE must not start or end with whitespace");
+}
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR || "/output";
 mkdirSync(outDir, { recursive: true });
